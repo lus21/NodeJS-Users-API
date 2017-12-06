@@ -34,28 +34,23 @@ app.get('/users', (req, res) => {
 
 // returns json. status and user with specified id
 app.get('/users/:id', (req, res) => {
-	let data = '';
+	let data = {};
 	const  index = users.findIndex(findUserById.bind( null, req.params.id )); //index will be -1 if no user
-	index < 0 ? data = 'User not found' : data = users[index];
-	res.setHeader('Content-Type', 'application/json');
+	index < 0 ? data = {msg : 'User not found'} : data = users[index];
 	res.json({status: "OK", body: data });
-	res.end();
 });
 
 // deleting user with specified id, returns json. status and msg
 app.delete('/users/:id', (req, res) => {
 	const  index = users.findIndex(findUserById.bind( null, req.params.id )); 
 	if (index >= 0) users.splice(index, 1);
-	res.setHeader('Content-Type', 'application/json');
 	res.json({status: "OK", body: "Successfully deleted" });
-	res.end();
 });
 
 // updating user with specified id, returns json. status and msg
 app.put('/users/:id', (req, res) => {
 	const updateData = req.body;
 	const index = users.findIndex(findUserById.bind( null, req.params.id ));
-	res.setHeader('Content-Type', 'application/json');
 	if (index < 0) {
 		res.json({status: "OK", body: 'User not found' });
 	} else {
@@ -64,7 +59,6 @@ app.put('/users/:id', (req, res) => {
 		}
 		res.json({status: "OK", body: 'Successfully updated' });
 	}
-	res.end();
 });
 
 // from array returns object wich id is equal to given
