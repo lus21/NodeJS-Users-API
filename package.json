@@ -1,0 +1,23 @@
+{
+  "name": "users_api",
+  "version": "1.0.0",
+  "description": "get,update and delete users,data in JS array",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "get",
+    "put",
+    "delete",
+    "js",
+    "array"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
